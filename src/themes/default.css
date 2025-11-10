@@ -1,0 +1,36 @@
+/**
+ * Default theme for Octopus progress components
+ * Import this CSS file to apply the default theme
+ */
+
+:root {
+  /* Colors */
+  --octopus-primary-color: #3b82f6;
+  --octopus-success-color: #10b981;
+  --octopus-warning-color: #f59e0b;
+  --octopus-error-color: #ef4444;
+  --octopus-track-color: #e5e7eb;
+  --octopus-buffer-color: #cbd5e1;
+  
+  /* Typography */
+  --octopus-label-color: #1f2937;
+  --octopus-label-font-size: 12px;
+  --octopus-label-font-weight: 600;
+  
+  /* Progress Bar */
+  --octopus-bar-height: 8px;
+  --octopus-border-radius: 4px;
+  
+  /* Countdown */
+  --octopus-countdown-value-size: 24px;
+  --octopus-countdown-value-weight: 700;
+  --octopus-countdown-value-color: #1f2937;
+  --octopus-countdown-label-size: 10px;
+  --octopus-countdown-label-weight: 500;
+  --octopus-countdown-label-color: #6b7280;
+  --octopus-countdown-gap: 12px;
+  --octopus-unit-gap: 4px;
+  
+  /* Animation */
+  --octopus-transition-speed: 300ms;
+}

@@ -1,0 +1,36 @@
+/**
+ * Minimal theme for Octopus progress components
+ * A clean, minimalist theme with subtle colors
+ */
+
+:root {
+  /* Colors */
+  --octopus-primary-color: #000000;
+  --octopus-success-color: #22c55e;
+  --octopus-warning-color: #eab308;
+  --octopus-error-color: #dc2626;
+  --octopus-track-color: #f3f4f6;
+  --octopus-buffer-color: #e5e7eb;
+  
+  /* Typography */
+  --octopus-label-color: #374151;
+  --octopus-label-font-size: 11px;
+  --octopus-label-font-weight: 500;
+  
+  /* Progress Bar */
+  --octopus-bar-height: 6px;
+  --octopus-border-radius: 2px;
+  
+  /* Countdown */
+  --octopus-countdown-value-size: 20px;
+  --octopus-countdown-value-weight: 600;
+  --octopus-countdown-value-color: #111827;
+  --octopus-countdown-label-size: 9px;
+  --octopus-countdown-label-weight: 400;
+  --octopus-countdown-label-color: #9ca3af;
+  --octopus-countdown-gap: 8px;
+  --octopus-unit-gap: 2px;
+  
+  /* Animation */
+  --octopus-transition-speed: 200ms;
+}

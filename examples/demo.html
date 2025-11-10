@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Octopus Progress Components - Examples</title>
+  <script crossorigin src="https://unpkg.com/react@19/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@19/umd/react-dom.production.min.js"></script>
+  <link rel="stylesheet" href="../src/themes/default.css">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .example-section {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+    }
+    .example-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .example-item {
+      flex: 1;
+      min-width: 200px;
+    }
+    h1 { color: #1f2937; }
+    h2 { color: #374151; font-size: 1.5rem; }
+    h3 { color: #6b7280; font-size: 1rem; margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>🐙 Octopus Progress Components</h1>
+  
+  <div class="example-section">
+    <h2>Progress Bars</h2>
+    <div class="example-grid">
+      <div class="example-item">
+        <h3>Horizontal Progress</h3>
+        <div id="progress-horizontal"></div>
+      </div>
+      
+      <div class="example-item">
+        <h3>Vertical Progress</h3>
+        <div id="progress-vertical" style="height: 200px;"></div>
+      </div>
+      
+      <div class="example-item">
+        <h3>Buffer Variant</h3>
+        <div id="progress-buffer"></div>
+      </div>
+      
+      <div class="example-item">
+        <h3>Indeterminate Loading</h3>
+        <div id="progress-indeterminate"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="example-section">
+    <h2>Circular Progress</h2>
+    <div class="example-grid">
+      <div class="example-item">
+        <h3>Basic Circular</h3>
+        <div id="circular-basic"></div>
+      </div>
+      
+      <div class="example-item">
+        <h3>With Custom Color</h3>
+        <div id="circular-custom"></div>
+      </div>
+      
+      <div class="example-item">
+        <h3>Indeterminate Spinner</h3>
+        <div id="circular-spinner"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="example-section">
+    <h2>Countdown Timers</h2>
+    <div class="example-grid">
+      <div class="example-item">
+        <h3>Time Remaining</h3>
+        <div id="countdown-basic"></div>
+      </div>
+      
+      <div class="example-item">
+        <h3>With Labels</h3>
+        <div id="countdown-labels"></div>
+      </div>
+      
+      <div class="example-item">
+        <h3>Hours & Minutes Only</h3>
+        <div id="countdown-short"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    // Import from the built library
+    // Note: In production, you'd import from '@octopus/progress'
+    import { ProgressBar, CircularProgress, Countdown } from '../dist/index.js';
+    
+    const { createElement: h } = React;
+    const { createRoot } = ReactDOM;
+    
+    // Progress Bars
+    createRoot(document.getElementById('progress-horizontal')).render(
+      h(ProgressBar, { value: 75, showLabel: true })
+    );
+    
+    createRoot(document.getElementById('progress-vertical')).render(
+      h(ProgressBar, { value: 60, orientation: 'vertical', showLabel: true })
+    );
+    
+    createRoot(document.getElementById('progress-buffer')).render(
+      h(ProgressBar, { value: 50, variant: 'buffer', bufferValue: 75 })
+    );
+    
+    createRoot(document.getElementById('progress-indeterminate')).render(
+      h(ProgressBar, { value: 0, variant: 'indeterminate' })
+    );
+    
+    // Circular Progress
+    createRoot(document.getElementById('circular-basic')).render(
+      h(CircularProgress, { value: 80, size: 120, showLabel: true })
+    );
+    
+    createRoot(document.getElementById('circular-custom')).render(
+      h(CircularProgress, { value: 65, size: 120, showLabel: true, color: '#10b981' })
+    );
+    
+    createRoot(document.getElementById('circular-spinner')).render(
+      h(CircularProgress, { value: 0, size: 120, variant: 'indeterminate' })
+    );
+    
+    // Countdown Timers
+    const futureDate = new Date(Date.now() + 3600000 * 24 * 5); // 5 days from now
+    const nearFuture = new Date(Date.now() + 3600000 * 2); // 2 hours from now
+    
+    createRoot(document.getElementById('countdown-basic')).render(
+      h(Countdown, { targetDate: futureDate })
+    );
+    
+    createRoot(document.getElementById('countdown-labels')).render(
+      h(Countdown, { targetDate: futureDate, showLabels: true })
+    );
+    
+    createRoot(document.getElementById('countdown-short')).render(
+      h(Countdown, { targetDate: nearFuture, format: 'Hms', showLabels: true })
+    );
+  </script>
+</body>
+</html>

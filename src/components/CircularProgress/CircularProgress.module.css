@@ -1,0 +1,59 @@
+.circularProgress {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg {
+  transform: scaleY(-1);
+}
+
+.track {
+  fill: none;
+  stroke: var(--octopus-track-color, #e5e7eb);
+}
+
+.progress {
+  fill: none;
+  stroke: var(--octopus-primary-color, #3b82f6);
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--octopus-transition-speed, 300ms) ease-in-out;
+}
+
+.progress.counter-clockwise {
+  transform: scaleX(-1);
+  transform-origin: center;
+}
+
+.indeterminate .progress {
+  animation: rotate 1.4s linear infinite;
+  stroke-dasharray: 80, 200;
+  stroke-dashoffset: 0;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.label {
+  font-size: var(--octopus-label-font-size, 14px);
+  font-weight: var(--octopus-label-font-weight, 600);
+  color: var(--octopus-label-color, #1f2937);
+}
