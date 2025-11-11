@@ -12,12 +12,6 @@ describe('ProgressBar', () => {
     expect(progressBar).toHaveAttribute('aria-valuemax', '100');
   });
 
-  it('applies aspect-ratio style', () => {
-    render(<ProgressBar value={50} />);
-    const progressBar = screen.getByRole('progressbar');
-    expect(progressBar).toHaveStyle({ aspectRatio: '1 / 1' });
-  });
-
   it('displays label when showLabel is true', () => {
     render(<ProgressBar value={75} showLabel />);
     expect(screen.getByText('75%')).toBeInTheDocument();
@@ -102,5 +96,45 @@ describe('ProgressBar', () => {
   it('applies custom max value', () => {
     render(<ProgressBar value={50} max={200} showLabel />);
     expect(screen.getByText('25%')).toBeInTheDocument();
+  });
+
+  // Segmented progress tests
+  it('renders with segments', () => {
+    render(<ProgressBar value={3} max={12} segments={12} />);
+    const progressBar = screen.getByRole('progressbar');
+    expect(progressBar.className).toContain('segmented');
+  });
+
+  it('calls onSegmentComplete when segments fill', () => {
+    const onSegmentComplete = vi.fn();
+    const { rerender } = render(
+      <ProgressBar value={2} max={12} segments={12} onSegmentComplete={onSegmentComplete} />
+    );
+    
+    rerender(<ProgressBar value={3} max={12} segments={12} onSegmentComplete={onSegmentComplete} />);
+    expect(onSegmentComplete).toHaveBeenCalledWith(2);
+  });
+
+  it('displays label at specified position', () => {
+    render(<ProgressBar value={75} showLabel labelPosition="top-right" />);
+    const label = screen.getByText('75%');
+    expect(label).toHaveAttribute('data-position', 'top-right');
+  });
+
+  it('displays message with animation', () => {
+    render(<ProgressBar value={50} message="Loading data" messageAnimation="dots-wave" />);
+    expect(screen.getByText(/Loading data/)).toBeInTheDocument();
+  });
+
+  it('applies thickness variants', () => {
+    const { container } = render(<ProgressBar value={50} thickness="thick" />);
+    const progressBar = screen.getByRole('progressbar');
+    expect(progressBar.style.getPropertyValue('--bar-thickness')).toBe('60px');
+  });
+
+  it('applies custom thickness in pixels', () => {
+    const { container } = render(<ProgressBar value={50} thickness={50} />);
+    const progressBar = screen.getByRole('progressbar');
+    expect(progressBar.style.getPropertyValue('--bar-thickness')).toBe('50px');
   });
 });

@@ -54,7 +54,7 @@ function App() {
 
 ### ProgressBar
 
-Linear progress indicator with horizontal/vertical orientations.
+Linear progress indicator with horizontal/vertical orientations and segmented support.
 
 ```tsx
 <ProgressBar 
@@ -63,8 +63,22 @@ Linear progress indicator with horizontal/vertical orientations.
   orientation="horizontal"
   variant="determinate"
   showLabel
+  labelPosition="top-right"
   color="#3b82f6"
   onComplete={() => console.log('Complete!')}
+/>
+
+// Segmented progress (e.g., 12 months)
+<ProgressBar 
+  value={3} 
+  max={12} 
+  segments={12}
+  segmentSpacing={true}
+  thickness="thick"
+  showLabel
+  message="Loading yearly data"
+  messageAnimation="dots-wave"
+  onSegmentComplete={(idx) => console.log(`Segment ${idx} done`)}
 />
 ```
 
@@ -73,10 +87,17 @@ Linear progress indicator with horizontal/vertical orientations.
 - `max` - Maximum value (default: 100)
 - `orientation` - `'horizontal'` | `'vertical'`
 - `variant` - `'determinate'` | `'indeterminate'` | `'buffer'`
+- `segments` - Divide bar into N segments (sequential fill)
+- `segmentSpacing` - Add gaps between segments
+- `thickness` - `'thin'` | `'normal'` | `'thick'` | number (px)
 - `showLabel` - Display percentage label
+- `labelPosition` - Label placement (top/bottom, left/center/right)
+- `message` - Status message with animation
+- `messageAnimation` - `'dots-wave'` | `'dots-pulse'` | `'ellipsis'` | `'none'`
 - `color` - Custom progress color
 - `onChange` - Callback on value change
 - `onComplete` - Callback when value reaches max
+- `onSegmentComplete` - Callback when each segment fills
 
 ### CircularProgress
 

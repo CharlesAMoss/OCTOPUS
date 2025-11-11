@@ -27,12 +27,32 @@ interface ProgressBarProps {
   bufferValue?: number;             // Buffer value for buffer variant
   color?: string;                   // Custom progress color
   showLabel?: boolean;              // Display percentage label
+  labelPosition?: LabelPosition;    // Label placement (top/bottom, left/center/right)
   labelFormatter?: (value: number, max: number) => string;
+  
+  // Segmented progress bars
+  segments?: number;                // Divide bar into N segments (e.g., 12 for months)
+  segmentSpacing?: boolean;         // Add gaps between segments
+  onSegmentComplete?: (segmentIndex: number) => void; // Fires when each segment fills
+  
+  // Thickness control
+  thickness?: 'thin' | 'normal' | 'thick' | number; // Bar thickness (default: 40px)
+  
+  // Message display
+  message?: string;                 // Status message with animation
+  messagePosition?: LabelPosition;  // Message placement
+  messageAnimation?: 'dots-wave' | 'dots-pulse' | 'ellipsis' | 'none';
+  
   onChange?: (value: number) => void;
   onComplete?: () => void;
   className?: string;
   ariaLabel?: string;
 }
+
+type LabelPosition = 
+  | 'top-left' | 'top-center' | 'top-right'
+  | 'bottom-left' | 'bottom-center' | 'bottom-right'
+  | 'center';
 ```
 
 ### Examples
@@ -43,6 +63,33 @@ interface ProgressBarProps {
 
 // With label and custom color
 <ProgressBar value={60} showLabel color="#10b981" />
+
+// Segmented progress (12 months)
+<ProgressBar 
+  value={3} 
+  max={12} 
+  segments={12}
+  thickness="thick"
+  showLabel
+  labelPosition="top-right"
+  onSegmentComplete={(idx) => console.log(`Month ${idx + 1} complete`)}
+/>
+
+// Segments with spacing
+<ProgressBar 
+  value={75} 
+  segments={4}
+  segmentSpacing={true}
+  thickness="thick"
+/>
+
+// With animated message
+<ProgressBar 
+  value={45} 
+  message="Processing files"
+  messageAnimation="dots-wave"
+  messagePosition="bottom-left"
+/>
 
 // Vertical orientation
 <ProgressBar value={80} orientation="vertical" />
@@ -58,8 +105,15 @@ interface ProgressBarProps {
   value={30} 
   max={50}
   showLabel 
+  labelPosition="top-center"
   labelFormatter={(v, max) => `${v}/${max} tasks`}
 />
+
+// Thin progress bar
+<ProgressBar value={60} thickness="thin" />
+
+// Custom pixel thickness
+<ProgressBar value={60} thickness={50} />
 ```
 
 ### CSS Custom Properties
@@ -68,10 +122,35 @@ interface ProgressBarProps {
 --octopus-primary-color: #3b82f6;
 --octopus-track-color: #e5e7eb;
 --octopus-buffer-color: #cbd5e1;
---octopus-bar-height: 8px;
+--octopus-label-color: #1f2937;
 --octopus-border-radius: 4px;
 --octopus-transition-speed: 300ms;
 ```
+
+### Segmented Progress Features
+
+**Sequential Fill Behavior**: When using `segments`, the bar fills sequentially from left to right. The `value` represents progress across all segments:
+
+- `value={3}` with `segments={12}` → 3 full segments filled
+- `value={3.5}` with `segments={12}` → 3 full + 1 half-filled segment
+- Each segment completion triggers `onSegmentComplete(index)`
+
+**Thickness Options**:
+- `"thin"`: 20px height
+- `"normal"`: 40px height (default)
+- `"thick"`: 60px height
+- Number: Custom pixel value (e.g., `thickness={50}`)
+
+**Label Positioning**: Labels can be placed in 7 positions relative to the bar:
+- Top: `top-left`, `top-center`, `top-right`
+- Bottom: `bottom-left`, `bottom-center`, `bottom-right`
+- Center: `center` (overlays the bar)
+
+**Message Animations**:
+- `"dots-wave"`: Animated wave effect (⋅⋅⋅)
+- `"dots-pulse"`: Pulsing dots
+- `"ellipsis"`: Cycling ellipsis (. .. ...)
+- `"none"`: Static message
 
 ---
 
