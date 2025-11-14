@@ -80,6 +80,21 @@ Linear progress indicator with horizontal/vertical orientations and segmented su
   messageAnimation="dots-wave"
   onSegmentComplete={(idx) => console.log(`Segment ${idx} done`)}
 />
+
+// Graphic equalizer with vertical bars
+<div style={{ display: 'flex', gap: '4px', alignItems: 'flex-end', height: '200px' }}>
+  {levels.map((level, i) => (
+    <ProgressBar
+      key={i}
+      value={level}
+      orientation="vertical"
+      segments={10}
+      segmentSpacing
+      thickness={16}
+      color={`hsl(${120 + i * 8}, 70%, 50%)`}
+    />
+  ))}
+</div>
 ```
 
 **Props:**

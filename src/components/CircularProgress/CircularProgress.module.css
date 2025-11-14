@@ -27,17 +27,33 @@
 }
 
 .indeterminate .progress {
-  animation: rotate 1.4s linear infinite;
-  stroke-dasharray: 80, 200;
+  animation: indeterminate-rotate 1.4s linear infinite, indeterminate-dash 1.4s ease-in-out infinite;
+  stroke-dasharray: 1, 200;
   stroke-dashoffset: 0;
+  transform-origin: center;
 }
 
-@keyframes rotate {
+@keyframes indeterminate-rotate {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes indeterminate-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 100, 200;
+    stroke-dashoffset: -15;
+  }
+  100% {
+    stroke-dasharray: 100, 200;
+    stroke-dashoffset: -125;
   }
 }
 

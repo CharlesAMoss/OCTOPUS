@@ -183,27 +183,25 @@ export function ProgressBar({
         '--bar-thickness': `${thicknessPx}px`,
       } as React.CSSProperties}
     >
-      {showLabel && (
-        <div 
-          className={styles.label} 
-          data-position={labelPosition}
-        >
-          {defaultLabel}
-        </div>
-      )}
-      
       <div className={styles.barContainer}>
+        {showLabel && (
+          <div 
+            className={styles.label} 
+            data-position={labelPosition}
+          >
+            {defaultLabel}
+          </div>
+        )}
         {segments ? renderSegmented() : renderContinuous()}
+        {message && (
+          <div 
+            className={styles.message} 
+            data-position={messagePosition}
+          >
+            {getAnimatedMessage()}
+          </div>
+        )}
       </div>
-      
-      {message && (
-        <div 
-          className={styles.message} 
-          data-position={messagePosition}
-        >
-          {getAnimatedMessage()}
-        </div>
-      )}
     </div>
   );
 }

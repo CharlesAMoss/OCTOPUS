@@ -6,12 +6,15 @@ import './demo.css';
 export function App() {
   const [progress, setProgress] = React.useState(0);
   const [months, setMonths] = React.useState(3); // For 12-segment demo
+  const [eqLevels, setEqLevels] = React.useState(Array(20).fill(0).map(() => Math.random() * 100));
   const targetDate = React.useMemo(() => new Date(Date.now() + 300000), []); // 5 minutes from now
 
   React.useEffect(() => {
     const timer = setInterval(() => {
       setProgress((prev) => (prev >= 100 ? 0 : prev + 1));
       setMonths((prev) => (prev >= 12 ? 0 : prev + 0.1));
+      // Randomize equalizer levels
+      setEqLevels(prev => prev.map(() => Math.random() * 100));
     }, 100);
     return () => clearInterval(timer);
   }, []);
@@ -64,11 +67,6 @@ export function App() {
               orientation="vertical"
               thickness={20}
               color="#f59e0b"
-              showLabel
-              labelPosition="center"
-              message="Processing"
-              messagePosition="top-center"
-              messageAnimation="dots-pulse"
             />
           </div>
         </div>
@@ -142,17 +140,21 @@ export function App() {
       </section>
 
       <section className="demo-section">
-        <h2>Progress Bar - Vertical</h2>
-        <div className="demo-grid">
-          <div className="demo-item vertical">
-            <h3>Determinate</h3>
-            <ProgressBar value={progress} max={100} orientation="vertical" showLabel />
-          </div>
-          
-          <div className="demo-item vertical">
-            <h3>Indeterminate</h3>
-            <ProgressBar value={progress} max={100} orientation="vertical" variant="indeterminate" />
-          </div>
+        <h2>Graphic Equalizer (Vertical Bars)</h2>
+        <div className="equalizer-container">
+          {eqLevels.map((level, idx) => (
+            <div key={idx} className="equalizer-bar">
+              <ProgressBar 
+                value={level} 
+                max={100} 
+                orientation="vertical"
+                thickness={16}
+                segments={10}
+                segmentSpacing={true}
+                color={`hsl(${120 + idx * 8}, 70%, 50%)`}
+              />
+            </div>
+          ))}
         </div>
       </section>
 
@@ -161,12 +163,12 @@ export function App() {
         <div className="demo-grid">
           <div className="demo-item">
             <h3>With showLabel</h3>
-            <CircularProgress value={progress} max={100} size={120} strokeWidth={8} showLabel />
+            <CircularProgress value={progress} max={100} size={120} strokeWidth={16} showLabel />
           </div>
           
           <div className="demo-item">
             <h3>Custom Center Content</h3>
-            <CircularProgress value={progress} max={100} size={120} strokeWidth={8}>
+            <CircularProgress value={progress} max={100} size={120} strokeWidth={16}>
               <div style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#3b82f6' }}>
                   {progress}%
@@ -180,7 +182,7 @@ export function App() {
           
           <div className="demo-item">
             <h3>Indeterminate</h3>
-            <CircularProgress value={progress} max={100} size={120} strokeWidth={8} variant="indeterminate" />
+            <CircularProgress value={progress} max={100} size={120} strokeWidth={16} variant="indeterminate" />
           </div>
           
           <div className="demo-item">
@@ -189,7 +191,7 @@ export function App() {
               value={progress} 
               max={100} 
               size={120} 
-              strokeWidth={8}
+              strokeWidth={16}
               direction="counter-clockwise"
               showLabel
             />

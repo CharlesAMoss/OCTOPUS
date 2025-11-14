@@ -79,9 +79,9 @@ export function CircularProgress({
           r={radius}
           strokeWidth={strokeWidth}
           stroke={color}
-          strokeDasharray={circumference}
-          strokeDashoffset={variant === 'determinate' ? offset : 0}
-          transform={`rotate(-90 ${size / 2} ${size / 2})`}
+          strokeDasharray={variant === 'indeterminate' ? undefined : circumference}
+          strokeDashoffset={variant === 'indeterminate' ? undefined : offset}
+          transform={variant === 'indeterminate' ? undefined : `rotate(-90 ${size / 2} ${size / 2})`}
         />
       </svg>
       
