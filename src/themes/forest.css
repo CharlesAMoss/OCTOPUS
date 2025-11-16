@@ -1,0 +1,37 @@
+/**
+ * Forest theme for Octopus progress components
+ * Natural green and earth tone palette
+ */
+
+:root {
+  /* Colors - Forest */
+  --octopus-primary-color: #16a34a;
+  --octopus-success-color: #22c55e;
+  --octopus-warning-color: #84cc16;
+  --octopus-error-color: #65a30d;
+  --octopus-track-color: #dcfce7;
+  --octopus-buffer-color: #bbf7d0;
+  
+  /* Typography - Forest */
+  --octopus-label-color: #14532d;
+  --octopus-label-font-size: 12px;
+  --octopus-label-font-weight: 700;
+  --octopus-message-color: #166534;
+  
+  /* Progress Bar */
+  --octopus-bar-height: 8px;
+  --octopus-border-radius: 4px;
+  
+  /* Countdown - Forest */
+  --octopus-countdown-value-size: 24px;
+  --octopus-countdown-value-weight: 700;
+  --octopus-countdown-value-color: #14532d;
+  --octopus-countdown-label-size: 10px;
+  --octopus-countdown-label-weight: 500;
+  --octopus-countdown-label-color: #166534;
+  --octopus-countdown-gap: 12px;
+  --octopus-unit-gap: 4px;
+  
+  /* Animation */
+  --octopus-transition-speed: 300ms;
+}

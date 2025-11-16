@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { fileURLToPath } from 'url';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -19,7 +20,17 @@ export default defineConfig(({ command }) => {
 
   // Build mode: library configuration
   return {
-    plugins: [react()],
+    plugins: [
+      react(),
+      viteStaticCopy({
+        targets: [
+          {
+            src: 'src/themes/*.css',
+            dest: 'themes',
+          },
+        ],
+      }),
+    ],
     build: {
       lib: {
         entry: resolve(__dirname, 'src/index.ts'),

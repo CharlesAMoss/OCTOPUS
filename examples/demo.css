@@ -24,6 +24,94 @@ h1 {
   display: block;
   position: relative;
   z-index: 10;
+  text-align: center;
+}
+
+.theme-selector {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.theme-selector label {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+}
+
+.theme-dropdown {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #3b82f6;
+  border-radius: 6px;
+  background: white;
+  color: #1a1a1a;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  min-width: 150px;
+}
+
+.theme-dropdown:hover {
+  border-color: #2563eb;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+}
+
+.theme-dropdown:focus {
+  outline: none;
+  border-color: #1d4ed8;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Theme-specific body backgrounds */
+body[data-theme="dark"] {
+  background: #111827;
+  color: #f3f4f6;
+}
+
+body[data-theme="dark"] .demo-section,
+body[data-theme="dark"] .demo-item,
+body[data-theme="dark"] .theme-selector {
+  background: #1f2937;
+  border-color: #374151;
+  color: #f3f4f6;
+}
+
+body[data-theme="dark"] h1,
+body[data-theme="dark"] h2,
+body[data-theme="dark"] h3 {
+  color: #f9fafb;
+}
+
+body[data-theme="neon"] {
+  background: #000000;
+  color: #00ffff;
+}
+
+body[data-theme="neon"] .demo-section,
+body[data-theme="neon"] .demo-item,
+body[data-theme="neon"] .theme-selector {
+  background: #0a0a0a;
+  border-color: #00ffff;
+  color: #00ffff;
+}
+
+body[data-theme="neon"] h1,
+body[data-theme="neon"] h2 {
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+body[data-theme="neon"] .equalizer-container {
+  background: #000000;
+  border: 2px solid #00ffff;
 }
 
 h2 {

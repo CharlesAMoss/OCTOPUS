@@ -1,13 +1,27 @@
 import React from 'react';
 import { ProgressBar, CircularProgress, Countdown } from '../src';
-import '../src/themes/default.css';
 import './demo.css';
 
 export function App() {
   const [progress, setProgress] = React.useState(0);
   const [months, setMonths] = React.useState(3); // For 12-segment demo
   const [eqLevels, setEqLevels] = React.useState(Array(20).fill(0).map(() => Math.random() * 100));
+  const [theme, setTheme] = React.useState('default');
   const targetDate = React.useMemo(() => new Date(Date.now() + 300000), []); // 5 minutes from now
+
+  // Load theme dynamically
+  React.useEffect(() => {
+    const loadTheme = async () => {
+      try {
+        await import(`../src/themes/${theme}.css`);
+        // Update body data-theme attribute for theme-specific styling
+        document.body.setAttribute('data-theme', theme);
+      } catch (error) {
+        console.error(`Failed to load theme: ${theme}`, error);
+      }
+    };
+    loadTheme();
+  }, [theme]);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -22,6 +36,25 @@ export function App() {
   return (
     <div className="demo-container">
       <h1>Octopus Progress Components Demo</h1>
+      
+      {/* Theme Selector */}
+      <div className="theme-selector">
+        <label htmlFor="theme-select">Theme:</label>
+        <select 
+          id="theme-select"
+          value={theme} 
+          onChange={(e) => setTheme(e.target.value)}
+          className="theme-dropdown"
+        >
+          <option value="default">Default</option>
+          <option value="dark">Dark</option>
+          <option value="ocean">Ocean</option>
+          <option value="sunset">Sunset</option>
+          <option value="forest">Forest</option>
+          <option value="neon">Neon</option>
+          <option value="minimal">Minimal</option>
+        </select>
+      </div>
       
       {/* NEW: Segmented Progress Bars */}
       <section className="demo-section">

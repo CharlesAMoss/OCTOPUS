@@ -8,6 +8,7 @@ Complete API reference for all Octopus components.
 - [CircularProgress](#circularprogress)
 - [Countdown](#countdown)
 - [ComponentRegistry](#componentregistry)
+- [Themes](#themes)
 - [Utilities](#utilities)
 
 ---
@@ -349,6 +350,95 @@ const markers = ComponentRegistry.getMarkers();
 
 // Clear all
 ComponentRegistry.clear();
+```
+
+---
+
+## Themes
+
+Octopus includes 7 pre-built themes with full CSS custom property support for easy customization.
+
+### Available Themes
+
+| Theme | Description | Best For |
+|-------|-------------|----------|
+| `default.css` | Blue and neutral grays | General purpose, professional UIs |
+| `dark.css` | Lighter colors on dark backgrounds | Dark mode applications |
+| `ocean.css` | Cool blues and teals | Data dashboards, analytics |
+| `sunset.css` | Warm oranges and reds | Creative apps, notifications |
+| `forest.css` | Natural greens and earth tones | Health, environment, progress tracking |
+| `neon.css` | Vibrant cyberpunk style | Gaming, entertainment, modern UIs |
+| `minimal.css` | Simplified, lightweight | Minimalist designs, fast load times |
+
+### Usage
+
+```tsx
+// Import a theme at the top of your app
+import '@octopus/progress/themes/dark.css';
+
+// Components automatically use theme colors
+<ProgressBar value={75} showLabel />
+<CircularProgress value={60} size={100} showLabel />
+```
+
+### CSS Custom Properties
+
+All themes define these variables:
+
+```css
+:root {
+  /* Colors */
+  --octopus-primary-color: #3b82f6;
+  --octopus-success-color: #10b981;
+  --octopus-warning-color: #f59e0b;
+  --octopus-error-color: #ef4444;
+  --octopus-track-color: #e5e7eb;
+  --octopus-buffer-color: #cbd5e1;
+  
+  /* Typography */
+  --octopus-label-color: #1f2937;
+  --octopus-label-font-size: 12px;
+  --octopus-label-font-weight: 600;
+  --octopus-message-color: #6b7280;
+  
+  /* Sizing */
+  --octopus-bar-height: 8px;
+  --octopus-border-radius: 4px;
+  
+  /* Countdown */
+  --octopus-countdown-value-size: 24px;
+  --octopus-countdown-value-color: #1f2937;
+  --octopus-countdown-label-size: 10px;
+  --octopus-countdown-label-color: #6b7280;
+  
+  /* Animation */
+  --octopus-transition-speed: 300ms;
+}
+```
+
+### Creating Custom Themes
+
+Override CSS variables to create your own theme:
+
+```css
+/* my-theme.css */
+:root {
+  --octopus-primary-color: #8b5cf6;
+  --octopus-track-color: #f3e8ff;
+  --octopus-label-color: #5b21b6;
+}
+```
+
+### Dark Mode Support
+
+```css
+@media (prefers-color-scheme: dark) {
+  :root {
+    --octopus-primary-color: #60a5fa;
+    --octopus-track-color: #374151;
+    --octopus-label-color: #f3f4f6;
+  }
+}
 ```
 
 ---

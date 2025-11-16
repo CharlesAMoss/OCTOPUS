@@ -1,0 +1,37 @@
+/**
+ * Sunset theme for Octopus progress components
+ * Warm orange, red, and purple gradient palette
+ */
+
+:root {
+  /* Colors - Sunset */
+  --octopus-primary-color: #f97316;
+  --octopus-success-color: #fb923c;
+  --octopus-warning-color: #fbbf24;
+  --octopus-error-color: #dc2626;
+  --octopus-track-color: #fee2e2;
+  --octopus-buffer-color: #fecaca;
+  
+  /* Typography - Sunset */
+  --octopus-label-color: #7c2d12;
+  --octopus-label-font-size: 12px;
+  --octopus-label-font-weight: 700;
+  --octopus-message-color: #c2410c;
+  
+  /* Progress Bar */
+  --octopus-bar-height: 8px;
+  --octopus-border-radius: 8px;
+  
+  /* Countdown - Sunset */
+  --octopus-countdown-value-size: 24px;
+  --octopus-countdown-value-weight: 700;
+  --octopus-countdown-value-color: #7c2d12;
+  --octopus-countdown-label-size: 10px;
+  --octopus-countdown-label-weight: 500;
+  --octopus-countdown-label-color: #c2410c;
+  --octopus-countdown-gap: 12px;
+  --octopus-unit-gap: 4px;
+  
+  /* Animation */
+  --octopus-transition-speed: 350ms;
+}

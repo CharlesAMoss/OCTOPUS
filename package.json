@@ -23,7 +23,10 @@
   "files": [
     "dist",
     "README.md",
-    "COMPONENTS.md"
+    "COMPONENTS.md",
+    "THEMES.md",
+    "CHANGELOG.md",
+    "LICENSE"
   ],
   "scripts": {
     "dev": "vite",
@@ -52,22 +55,37 @@
     "jsdom": "^27.0.1",
     "typescript": "^5.9.3",
     "vite": "^7.1.7",
+    "vite-plugin-static-copy": "^3.1.4",
     "vitest": "^4.0.3"
   },
   "keywords": [
     "react",
     "progress",
     "progress-bar",
+    "circular-progress",
     "timer",
     "countdown",
     "tracker",
     "loading",
+    "spinner",
     "components",
-    "typescript"
+    "typescript",
+    "react-components",
+    "ui-components",
+    "progress-indicator",
+    "equalizer",
+    "segments",
+    "themes",
+    "dark-mode"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/octopus.git"
+    "url": "https://github.com/CharlesAMoss/OCTOPUS.git"
   },
+  "bugs": {
+    "url": "https://github.com/CharlesAMoss/OCTOPUS/issues"
+  },
+  "homepage": "https://github.com/CharlesAMoss/OCTOPUS#readme",
+  "author": "Charles A Moss",
   "license": "MIT"
 }

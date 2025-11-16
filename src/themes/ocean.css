@@ -1,0 +1,37 @@
+/**
+ * Ocean theme for Octopus progress components
+ * Cool blue and teal color palette
+ */
+
+:root {
+  /* Colors - Ocean */
+  --octopus-primary-color: #0891b2;
+  --octopus-success-color: #14b8a6;
+  --octopus-warning-color: #0ea5e9;
+  --octopus-error-color: #06b6d4;
+  --octopus-track-color: #cffafe;
+  --octopus-buffer-color: #a5f3fc;
+  
+  /* Typography - Ocean */
+  --octopus-label-color: #0c4a6e;
+  --octopus-label-font-size: 12px;
+  --octopus-label-font-weight: 700;
+  --octopus-message-color: #0e7490;
+  
+  /* Progress Bar */
+  --octopus-bar-height: 8px;
+  --octopus-border-radius: 6px;
+  
+  /* Countdown - Ocean */
+  --octopus-countdown-value-size: 24px;
+  --octopus-countdown-value-weight: 700;
+  --octopus-countdown-value-color: #164e63;
+  --octopus-countdown-label-size: 10px;
+  --octopus-countdown-label-weight: 500;
+  --octopus-countdown-label-color: #0e7490;
+  --octopus-countdown-gap: 12px;
+  --octopus-unit-gap: 4px;
+  
+  /* Animation */
+  --octopus-transition-speed: 400ms;
+}

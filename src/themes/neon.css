@@ -1,0 +1,43 @@
+/**
+ * Neon theme for Octopus progress components
+ * Vibrant, high-contrast colors with glowing effects
+ */
+
+:root {
+  /* Colors - Neon */
+  --octopus-primary-color: #00ffff;
+  --octopus-success-color: #00ff00;
+  --octopus-warning-color: #ffff00;
+  --octopus-error-color: #ff00ff;
+  --octopus-track-color: #0a0a0a;
+  --octopus-buffer-color: #1a1a1a;
+  
+  /* Typography - Neon */
+  --octopus-label-color: #00ffff;
+  --octopus-label-font-size: 12px;
+  --octopus-label-font-weight: 900;
+  --octopus-message-color: #ff00ff;
+  text-shadow: 0 0 8px #00ffff;
+  
+  /* Progress Bar */
+  --octopus-bar-height: 8px;
+  --octopus-border-radius: 2px;
+  
+  /* Countdown - Neon */
+  --octopus-countdown-value-size: 24px;
+  --octopus-countdown-value-weight: 700;
+  --octopus-countdown-value-color: #00ffff;
+  --octopus-countdown-label-size: 10px;
+  --octopus-countdown-label-weight: 500;
+  --octopus-countdown-label-color: #ff00ff;
+  --octopus-countdown-gap: 12px;
+  --octopus-unit-gap: 4px;
+  
+  /* Animation */
+  --octopus-transition-speed: 200ms;
+}
+
+/* Optional: Add glow effects */
+[data-theme="neon"] .octopus-progress {
+  filter: drop-shadow(0 0 8px var(--octopus-primary-color));
+}

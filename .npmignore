@@ -1,0 +1,39 @@
+# Development files
+examples/
+.vscode/
+.github/
+*.log
+*.tgz
+
+# Source files (dist/ is published instead)
+src/
+
+# Test files
+**/*.test.ts
+**/*.test.tsx
+**/__tests__/
+coverage/
+.vitest/
+
+# Config files
+vite.config.ts
+vitest.config.ts
+tsconfig.json
+tsconfig.node.json
+.eslintrc.cjs
+.gitignore
+
+# Documentation that's not needed in package
+OCTOPUS_PROJECT_PROMPT.md
+THEMES.md
+
+# Build artifacts
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Keep these files
+!dist/
+!README.md
+!COMPONENTS.md
+!LICENSE

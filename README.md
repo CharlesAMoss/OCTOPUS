@@ -2,7 +2,7 @@
 
 **Versatile React progress components** - bars, trackers, timers, and more.
 
-A TypeScript-first React component library for progress visualization, designed to work standalone or integrate seamlessly with [CROW grid](https://github.com/yourusername/crow).
+A TypeScript-first React component library for progress visualization, designed to work standalone or integrate seamlessly with CROW grid.
 
 ## Features
 
@@ -164,20 +164,71 @@ Timer counting down to a target date/time.
 
 ## Theming
 
-Octopus uses CSS custom properties for theming:
+Octopus includes 7 beautiful pre-built themes and full CSS custom property support.
+
+### Available Themes
 
 ```tsx
-// Import a built-in theme
+// Default - Blue and neutral grays
 import '@octopus/progress/themes/default.css';
-// or
+
+// Dark Mode - Lighter colors on dark backgrounds
+import '@octopus/progress/themes/dark.css';
+
+// Ocean - Cool blues and teals
+import '@octopus/progress/themes/ocean.css';
+
+// Sunset - Warm oranges and reds
+import '@octopus/progress/themes/sunset.css';
+
+// Forest - Natural greens and earth tones
+import '@octopus/progress/themes/forest.css';
+
+// Neon - Vibrant, high-contrast cyberpunk style
+import '@octopus/progress/themes/neon.css';
+
+// Minimal - Simplified, lightweight styling
 import '@octopus/progress/themes/minimal.css';
 ```
 
-**Custom theme:**
+### Custom Themes
+
+Create your own theme by defining CSS custom properties:
+
 ```css
 :root {
+  /* Colors */
   --octopus-primary-color: #3b82f6;
   --octopus-success-color: #10b981;
+  --octopus-track-color: #e5e7eb;
+  --octopus-buffer-color: #cbd5e1;
+  
+  /* Typography */
+  --octopus-label-color: #1f2937;
+  --octopus-message-color: #6b7280;
+  
+  /* Sizing */
+  --octopus-bar-height: 8px;
+  --octopus-border-radius: 4px;
+  
+  /* Animation */
+  --octopus-transition-speed: 300ms;
+}
+```
+
+### Dark Mode Support
+
+Use the dark theme or create a custom dark mode:
+
+```css
+@media (prefers-color-scheme: dark) {
+  :root {
+    --octopus-primary-color: #60a5fa;
+    --octopus-track-color: #374151;
+    --octopus-label-color: #f3f4f6;
+  }
+}
+```
   --octopus-track-color: #e5e7eb;
   --octopus-bar-height: 8px;
   --octopus-transition-speed: 300ms;
@@ -245,4 +296,4 @@ npm run typecheck
 
 ## License
 
-MIT © [Your Name]
+MIT © 2025 Charles A Moss

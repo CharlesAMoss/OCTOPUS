@@ -15,7 +15,8 @@
   /* Typography */
   --octopus-label-color: #1f2937;
   --octopus-label-font-size: 12px;
-  --octopus-label-font-weight: 600;
+  --octopus-label-font-weight: 700;
+  --octopus-message-color: #6b7280;
   
   /* Progress Bar */
   --octopus-bar-height: 8px;
